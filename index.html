@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head><!-- S = P (1 + i)n  + T ((1+i)n - 1)/i --> 
+      <!--Na conta feita "P" é o valor inicial, i a porcentagem , n o tempo, T é o valor a cada mês-->
+  <script>
+      function calcular(){
+
+          var P = form1.inicial.value;
+          var i = form1.juros.value;
+          var T = form1.mensal.value;
+          var n = form1.Periodo.value;
+          var S = 0;
+            i = i/100;
+            S = P * Math.pow((1 + i), n) + T * Math.pow((1 + i),n - 1)/i;
+            window.alert('O total é : ' + S.toFixed('2'));
+
+      }
+
+
+  function validar(){
+        var inicio = form1.inicial.value;
+        var mensal = form1.mensal.value;
+        var juros = form1.juros.value;
+        var periodo = form1.Periodo.value;
+
+        if(inicio==""){
+          window.alert("Preencha o campo 'Valor inicial'!");
+          inicio.focus();
+          return false;
+          
+        }
+        if(mensal==""){
+          window.alert("Preencha o campo 'Valor mensal'!");
+          mensal.focus();
+          return false;
+        }
+        if(juros==""){
+          window.alert("Preencha o campo'Taxa de juros'!");
+          juros.focus();
+          return false;
+        }
+        if(periodo==""){
+          window.alert("Preencha o campo 'Periodo em'!");
+          periodo.focus();
+          return false;
+        }
+  }
+
+
+  
+ //------------------------------------------------------------------------------------------------------------------------------
+  function convertAno(){
+      var select = form1.Selecione.value;
+
+      if (select == Ano){
+          select = select/12;
+      }
+    }
+//------------------------------------------------------------------------------------------------------------------------------
+
+  </script>
+<title> Calculador de Juros Compostos</title>
+
+<nav>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+</nav>
+
+<style>
+    body, html {
+        height: 100%;
+        font-family: "Inconsolata", sans-serif;
+    }
+    .bgimg {
+        background-position: center;
+        background-size: cover;
+        background-image: url("w3images/bg3.jpg");
+        min-height: 75%;
+    }
+    .menu {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<h1 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Calculadora de Juros Compostos </span></h1>
+        
+  <div name="calculadora" >
+  <form name ="form1" action="javascript:window.history.go(0)" method="post">
+  <p class="w3-text-grey">
+   Valor inicial :  
+    <input name="inicial" type="text" > <br> <br> <!--Na conta feita este campo equivale  ao valor de "P"-->
+
+  Valor mensal :  
+    <input name="mensal" type="text"> <br> <br> <!--Na conta feita este campo equivale  ao valor de "T"-->
+
+  Taxa de Juros :  
+    <input name="juros" type="text"> % <br> <br>  <!--Na conta feita este campo equivale  ao valor de "i"-->
+
+  Período em :
+    <input name="Periodo" type="text">  <select name="Selecione"> <!--Na conta feita este campo equivale  ao valor de "n"-->
+                                        <option>Mês</option>
+                                        <option>Ano</option>            
+                                        </select> </p><br>
+           
+      <button class="w3-button w3-black" onclick="return validar()" onclick="return convertAno()" onclick="return calcular()">Calcular</button>
+  </form>
+  </div>
+<!-- Copyright -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+
+</body>
+</html>
